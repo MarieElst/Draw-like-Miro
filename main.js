@@ -9,17 +9,6 @@ function showPaintings() {
 
 buttonPaintings.addEventListener("click",showPaintings); 
 
-/*Méthode 1 : recherche de la couleur sans utiliser une classe */
-// let color = "red"; 
-// let colorButton = document.querySelectorAll(".color"); 
-// for (let i=0; i<colorButton.length; i++) {
-// 	colorButton[i].addEventListener('click', function(e) {
-// 		color = colorButton[i].id; 
-// 		console.log(color); 
-// 	}); 
-// }
-
-/*Méthode 2 : toutes les options du pinceau en utilisant une classe (mieux)*/ 
 class Brush {
 	constructor() {
 		this.colorButton = document.querySelectorAll(".color"); 
@@ -50,29 +39,26 @@ class Canvas {
 
 	constructor(){
 
-        /*Création du canvas et du contexte*/
     	this.cvs = document.createElement("canvas");
         let cvs = this.cvs; 
         cvs.width = 600; 
         cvs.height = 400; 
         document.getElementById("canvas").appendChild(cvs);
+        cvs.addEventListener('mousedown', this.beginDraw.bind(this));
+        document.addEventListener('mouseup', this.stopDraw.bind(this)); 
+        cvs.addEventListener('mousemove', this.mouseDraw.bind(this)); 
+
         this.ctx = cvs.getContext('2d'); 
         let ctx = this.ctx;
 
         this.brush = new Brush(); 
 
         this.clearButton = document.getElementById("clear"); 
-
-        this.saveImage = document.getElementById("saveButton");
-
-        cvs.addEventListener('mousedown', this.beginDraw.bind(this));	//L'évènement mousedown est déclenché lorsque la souris est pressée sur le canvas. Dès qu'on clique dans le canvas, on lance la fonction de callback mouseDraw qui contient le mousemove. 
-        document.addEventListener('mouseup', this.stopDraw.bind(this)); 
-        	//L'événement mouseup est déclenché quand la souris est relâchée. Pour éviter de continuer à dessiner même quand on ne clique plus sur le canvas. 
-        cvs.addEventListener('mousemove', this.mouseDraw.bind(this)); //L'événement mousemove se déclenche quand la souris se déplace alors qu'elle est au dessus de l'élément canvas. La fonction de callback dessine le trait en suivant le chemin de la souris. 
-
         this.clearButton.addEventListener('click', this.clearAll.bind(this)); 
 
+        this.saveImage = document.getElementById("saveButton");
         this.saveImage.addEventListener('click', this.save.bind(this));  
+ 
     }
 
     beginDraw(e){
@@ -125,4 +111,3 @@ class App {
 }
 
 let app = new App("Drawing App");
-
