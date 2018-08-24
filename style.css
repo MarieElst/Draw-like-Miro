@@ -1,0 +1,83 @@
+body {
+	background-color: #00001B;
+	margin: 0;
+	padding: 50px; 
+}
+
+main {
+	font-family: 'Kosugi Maru', sans-serif;
+	color: #FFFFFF;
+}
+
+#paint {
+	display: flex; 
+	justify-content: space-around; 
+}
+
+canvas {
+	background-image: url('toile.jpg'); 
+	background-size: cover;
+	margin: 25px;
+}
+
+button {
+	border-width: 0;
+	border-color: #00001B;
+	background-color: #00001B; 
+	color: white; 
+	cursor: pointer;
+}
+
+#brushes, #erase, #save {
+	margin-top: 50px;
+}
+
+.color, .brush, .erase, #save h3, #inspired {
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+#red:hover {
+	color: #e70028; 
+}
+#yellow:hover {
+	color: #f6ca29; 
+}
+#blue:hover {
+	color: #0042bb; 
+}
+#black:hover {
+	color: black; 
+}
+
+#inspo {
+	margin-top: 50px; 
+}
+
+#inspired {
+	margin-bottom: 30px; 
+}
+
+#inspo .hide  {
+	display: none;
+}
+
+#paintings {
+	display: flex; 
+	justify-content: center; 
+	align-content: space-between;
+	flex-wrap: wrap;
+}
+
+figcaption {
+	padding: 8px;
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+span {
+	font-style: normal;
+}
+
+img {
+	max-width: 230px;
+}
